@@ -12,12 +12,10 @@ pizzaJson.forEach((e, i) => {
     pizzaItem.querySelector('.pizza-item--img img').src = e.img;
     pizzaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${pizzaPrice.toFixed(2)}`;
     pizzaItem.querySelector('.pizza-item--desc').innerHTML = e.description;
-    
-    c('.pizza-area').append(pizzaItem);
-    
     pizzaItem.querySelector('a').addEventListener('click', (e)=>{
+        console.log(e);
         e.preventDefault(); //Cancela o evento se for cancelável, sem parar a propagação do mesmo.
-        let key = e.target.closest('.pizza-item').getAttribute('data-key'); // O método Element.closest() retorna o ancestral mais próximo, em relação ao elemento atual, que possui o seletor fornecido como parâmetro. No caso de o elemento atual possuir o seletor, o mesmo é retornado. Caso não exista um ancestral o método retorna null.
+        let key = e.currentTarget.parentNode.getAttribute('data-key'); // O método Element.closest() retorna o ancestral mais próximo, em relação ao elemento atual, que possui o seletor fornecido como parâmetro. No caso de o elemento atual possuir o seletor, o mesmo é retornado. Caso não exista um ancestral o método retorna null.
         modalQt = 1;
         modalKey = key;
         c('.pizzaInfo--size.selected').classList.remove('selected');
@@ -41,6 +39,8 @@ pizzaJson.forEach((e, i) => {
         c('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price[2].toFixed(2)}`;
 
     })
+
+    c('.pizza-area').append(pizzaItem);
 
 });
 
