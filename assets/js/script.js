@@ -15,7 +15,7 @@ pizzaJson.forEach((e, i) => {
     pizzaItem.querySelector('a').addEventListener('click', (e)=>{
         e.preventDefault(); //Cancela o evento se for cancelável, sem parar a propagação do mesmo.
         let key = e.target.closest('.pizza-item').getAttribute('data-key'); // O método Element.closest() retorna o ancestral mais próximo, em relação ao elemento atual, que possui o seletor fornecido como parâmetro. No caso de o elemento atual possuir o seletor, o mesmo é retornado. Caso não exista um ancestral o método retorna null.
-        //let key = e.currentTarget.getAttribute('data-key'); O método acima poderia ser assim também.
+        //let key = e.currentTarget.parentNode.getAttribute('data-key'); O método acima poderia ser assim também.
         modalQt = 1;
         modalKey = key;
         c('.pizzaInfo--size.selected').classList.remove('selected');
